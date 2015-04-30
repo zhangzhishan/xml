@@ -10,7 +10,7 @@
 <link type="text/css" rel="stylesheet" href="lTREE.2.css" />
 <style type="text/css">
 #lTREEMenuDEMO {width:100%;border:1px solid #ccc;margin:3px;padding:3px;}
-#infoBox {position:absolute;left:450px;top:40px;border:1px solid #ccc;width:400px;padding:0 10px;font-family:"ËÎÌå",Geneva,Arial,sans-serif;line-height:150%;}
+#infoBox {position:absolute;left:450px;top:40px;border:1px solid #ccc;width:400px;padding:0 10px;font-family:Geneva,Arial,sans-serif;line-height:150%;}
 #debugMSG strong {color:#f00;}
 </style>
 <!--[if IE 6]>
@@ -20,13 +20,24 @@ document.execCommand("BackgroundImageCache", false, true);
 <![endif]-->
 </head>
 <body>
+<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.4/css/bootstrap.min.css">
+<div class="page-header">
+  <h1>Genealogy Schema Design<small>A web demo</small></h1>
+</div>
+<ul class="nav nav-pills">
+  <li role="presentation" ><a href="index.php">Home</a></li>
+  <li role="presentation" ><a href="add.php">Add</a></li>
+  <li role="presentation" class="active"><a href="search.php">Search</a></li>
+</ul>
+<div class="input-group">
+    <form action="search.php" >
+      <span class="input-group-addon">Last Name</span>
+      <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)" name="search" value="">
+      <span class="input-group-addon"><input type="submit" value="search"></span>
+    </form>
+</div>
 <!--lTREEMenu Start:-->
 <div class="lTREEMenu lTREENormal" id="lTREEMenuDEMO">
-
-    <form action="search.php" >
-    <dl>Last name<input type="text" value="" name="search"> <input type="submit" value="search"> </dl>
-    </form>
-
 <?php
 $path='persons.xml';
 $persons=new DOMDocument();
@@ -53,20 +64,23 @@ foreach($personElements as $person) {
     }*/
 }
 foreach($arrs as $item){
-    if($item['first']==$_GET['search']){
 
-       $name= $item['id']."&nbsp;".$item['first']. $item['name'].'|'. $item['sex'].'|'.$item['birthday'];
+    if ($_GET) {
+        if($item['first']==$_GET['search']){
+
+       $name= $item['id']."&nbsp;". $item['name'].' '.$item['first'].'|'. $item['sex'].'|'.$item['birthday'];
       echo "<dl>".$name."</dl>";
 
     }
+
+    }
+    
 
 }
 
 
 
 ?>
-    <dl><a href=".">Back</a>
-    </dl>
 </div>
 
 </body>

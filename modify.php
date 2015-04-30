@@ -1,6 +1,16 @@
 <html>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <body>
+<body>
+<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.4/css/bootstrap.min.css">
+<div class="page-header">
+  <h1>Genealogy Schema Design<small>A web demo</small></h1>
+</div>
+<ul class="nav nav-pills">
+  <li role="presentation" ><a href="index.php">Home</a></li>
+  <li role="presentation" ><a href="add.php">Add</a></li>
+  <li role="presentation" ><a href="search.php">Search</a></li>
+</ul>
 <?php
 $path='persons.xml';
 $persons=new DOMDocument();

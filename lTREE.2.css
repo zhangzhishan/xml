@@ -4,7 +4,14 @@ body {margin:0;padding:20px;font:12px tahoma,sans-serif;}
 h4 {margin:0;padding:0;font-size:18px;}
 p {margin:0;padding:0 0 0 18px;}
 p a,p a:visited {color:#00f;background:inherit;}
-
+.button:active, .button.focus {
+    color: #000;
+    background: -webkit-gradient(linear, 0, 0, 100% 0,
+        from (#A69520), to (#FFF089));
+    background: -moz-linear-gradient(#A69520, #FFF089);
+    background: -o-linear-gradient(#A69520, #FFF089);
+    background: linear-gradient(left center, #A69520, #FFF089);
+}
 /*lTREEMenu Start*/
 .lTREEMenu dl {padding:0;margin:0 0 2px 17px;clear:both;}
 .lTREEMenu a {background:none;}

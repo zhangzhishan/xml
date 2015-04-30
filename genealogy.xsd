@@ -1,0 +1,784 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:simpleType name="EmailType">
+        <xs:restriction base="xs:token">
+            <xs:pattern value="/^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z0-9]+$/"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="SimpleDateType">
+        <xs:restriction base="xs:token">
+            <xs:pattern value="(\-)?\d{4}(/\d{4})?(\-\d{2}(\-\d{2})?)?"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="SimpleTimeType">
+        <xs:restriction base="xs:token">
+            <xs:pattern value="\d{2}(:\d{2}(:\d{2})?)?"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="GenderTypes">
+        <xs:restriction base="xs:token">
+            <xs:enumeration value="Male"/>
+            <xs:enumeration value="Female"/>
+            <xs:enumeration value="Unknown"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="ReligionTypes">
+        <xs:restriction base="xs:token">
+            <xs:enumeration value="Anglican"/>
+            <xs:enumeration value="Baptist"/>
+            <xs:enumeration value="Buddhist"/>
+            <xs:enumeration value="Christian"/>
+            <xs:enumeration value="GreekOrchodox"/>
+            <xs:enumeration value="Hindi"/>
+            <xs:enumeration value="Jewish"/>
+            <xs:enumeration value="Methodist"/>
+            <xs:enumeration value="Mormon"/>
+            <xs:enumeration value="Muslim"/>
+            <xs:enumeration value="NoReligion"/>
+            <xs:enumeration value="Protestant"/>
+            <xs:enumeration value="RomanCatholic"/>
+            <xs:enumeration value="Sikh"/>
+            <xs:enumeration value="Taoism"/>
+            <xs:enumeration value="Unknown"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="AddressTypes">
+        <xs:restriction base="xs:token">
+            <xs:enumeration value="Home"/>
+            <xs:enumeration value="Office"/>
+            <xs:enumeration value="Other"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="PhoneTypes">
+        <xs:restriction base="xs:token">
+            <xs:enumeration value="Home"/>
+            <xs:enumeration value="Office"/>
+            <xs:enumeration value="Fax"/>
+            <xs:enumeration value="Mobile"/>
+            <xs:enumeration value="Other"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="LinkTypes">
+        <xs:restriction base="xs:token">
+            <xs:enumeration value="External"/>
+            <xs:enumeration value="Internal"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="ExistanceTypes">
+        <xs:restriction base="xs:token">
+            <xs:enumeration value="Living"/>
+            <xs:enumeration value="Deceased"/>
+            <xs:enumeration value="Mythical"/>
+            <xs:enumeration value="Unknown"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="EventTypes">
+        <xs:restriction base="xs:token">
+            <xs:enumeration value="Birth"/>
+            <xs:enumeration value="Baptism"/>
+            <xs:enumeration value="Death"/>
+            <xs:enumeration value="Burial"/>
+            <xs:enumeration value="Marriage"/>
+            <xs:enumeration value="Divorce"/>
+            <xs:enumeration value="Immigration"/>
+            <xs:enumeration value="Emigration"/>
+            <xs:enumeration value="Education"/>
+            <xs:enumeration value="Occupation"/>
+            <xs:enumeration value="Other"/>
+            <xs:enumeration value="Unknown"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="CalendarTypes">
+        <xs:restriction base="xs:token">
+            <xs:enumeration value="ChineseTraditional"/>
+            <xs:enumeration value="ChineseDynasty"/>
+            <xs:enumeration value="Gregorian"/>
+            <xs:enumeration value="Julian"/>
+            <xs:enumeration value="Hebrew"/>
+            <xs:enumeration value="FrenchRevolutionary"/>
+            <xs:enumeration value="Islamic"/>
+            <xs:enumeration value="Indian"/>
+            <xs:enumeration value="Unknown"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="DateTypes">
+        <xs:restriction base="xs:token">
+            <xs:enumeration value="About"/>
+            <xs:enumeration value="Exactly"/>
+            <xs:enumeration value="Before"/>
+            <xs:enumeration value="After"/>
+            <xs:enumeration value="Unknown"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="PeriodTypes">
+        <xs:restriction base="xs:token">
+            <xs:enumeration value="Present"/>
+            <xs:enumeration value="Old"/>
+            <xs:enumeration value="Ancient"/>
+            <xs:enumeration value="Unknown"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="PlacePartTypes">
+        <xs:restriction base="xs:token">
+            <xs:enumeration value="Continent"/>
+            <xs:enumeration value="Country"/>
+            <xs:enumeration value="State"/>
+            <xs:enumeration value="Province"/>
+            <xs:enumeration value="County"/>
+            <xs:enumeration value="District"/>
+            <xs:enumeration value="Region"/>
+            <xs:enumeration value="City"/>
+            <xs:enumeration value="Town"/>
+            <xs:enumeration value="Village"/>
+            <xs:enumeration value="Street"/>
+            <xs:enumeration value="Diocese"/>
+            <xs:enumeration value="Parish"/>
+            <xs:enumeration value="Building"/>
+            <xs:enumeration value="Mountain"/>
+            <xs:enumeration value="Lake"/>
+            <xs:enumeration value="Unknown"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="TargetTypes">
+        <xs:restriction base="xs:token">
+            <xs:enumeration value="Individual"/>
+            <xs:enumeration value="Family"/>
+            <xs:enumeration value="Group"/>
+            <xs:enumeration value="Citation"/>
+            <xs:enumeration value="MultiMedia"/>
+            <xs:enumeration value="Document"/>
+            <xs:enumeration value="Event"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="StatusTypes">
+        <xs:restriction base="xs:token">
+            <xs:enumeration value="Married"/>
+            <xs:enumeration value="Divorced"/>
+            <xs:enumeration value="Separated"/>
+            <xs:enumeration value="Widowed"/>
+            <xs:enumeration value="Engaged"/>
+            <xs:enumeration value="Cohabited"/>
+            <xs:enumeration value="Annulled"/>
+            <xs:enumeration value="Other"/>
+            <xs:enumeration value="Unknown"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="GroupTypes">
+        <xs:restriction base="xs:token">
+            <xs:enumeration value="Tribe"/>
+            <xs:enumeration value="Household"/>
+            <xs:enumeration value="Neighborhood"/>
+            <xs:enumeration value="Commune"/>
+            <xs:enumeration value="Army"/>
+            <xs:enumeration value="Unknown"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="GroupMemberRoleTypes">
+        <xs:restriction base="xs:token">
+            <xs:enumeration value="Ancestor"/>
+            <xs:enumeration value="Descendant"/>
+            <xs:enumeration value="Neighbor"/>
+            <xs:enumeration value="Comrade"/>
+            <xs:enumeration value="Unknown"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="DocumentTypes">
+        <xs:restriction base="xs:token">
+            <xs:enumeration value="Genealogy"/>
+            <xs:enumeration value="Group"/>
+            <xs:enumeration value="Individual"/>
+            <xs:enumeration value="Unknown"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="MultiMediaTypes">
+        <xs:restriction base="xs:token">
+            <xs:enumeration value="Video"/>
+            <xs:enumeration value="Picture"/>
+            <xs:enumeration value="Audio"/>
+            <xs:enumeration value="Unknown"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="GeometryTypes">
+        <xs:restriction base="xs:token">
+            <xs:enumeration value="Point"/>
+            <xs:enumeration value="LineString"/>
+            <xs:enumeration value="LinearRing"/>
+            <xs:enumeration value="Polygon"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:complexType name="GenderType">
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute default="Unknown" name="Type" type="GenderTypes" use="optional"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+    <xs:complexType name="ReligionType">
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute default="Unknown" name="Type" type="ReligionTypes" use="optional"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+    <xs:complexType name="ExistanceType">
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute default="Unknown" name="Type" type="ExistanceTypes" use="optional"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+    <xs:complexType name="RefIdType">
+        <xs:attribute name="Target" type="TargetTypes" use="required"/>
+        <xs:attribute name="RefId" type="xs:IDREF" use="required"/>
+    </xs:complexType>
+    <xs:complexType name="IndivNameType">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="Given" type="xs:string"/>
+            <xs:element minOccurs="0" name="Surname" type="xs:string"/>
+            <xs:element minOccurs="0" name="Middle" type="xs:string"/>
+            <xs:element minOccurs="0" name="Nickname" type="xs:string"/>
+            <xs:element minOccurs="0" name="Cognomen" type="xs:string"/>
+            <xs:element minOccurs="0" name="Religious" type="xs:string"/>
+            <xs:element minOccurs="0" name="Honorific" type="xs:string"/>
+            <xs:element minOccurs="0" name="Prefix" type="xs:string"/>
+            <xs:element minOccurs="0" name="Suffix" type="xs:string"/>
+            <xs:element minOccurs="0" name="Agnomen" type="xs:string"/>
+            <xs:element minOccurs="0" name="Title" type="xs:string"/>
+            <xs:element minOccurs="0" name="Stage" type="xs:string"/>
+            <xs:element minOccurs="0" name="Zi" type="xs:string"/>
+            <xs:element minOccurs="0" name="Hao" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="ModifiedType">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="Date" type="SimpleDateType"/>
+            <xs:element minOccurs="0" name="Time" type="SimpleTimeType"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="Note" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="AddressType">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="Description" type="xs:string"/>
+            <xs:element minOccurs="0" name="PostalCode" type="xs:string"/>
+        </xs:sequence>
+        <xs:attribute default="Other" name="Type" type="AddressTypes" use="optional"/>
+    </xs:complexType>
+    <xs:complexType name="PhoneType">
+        <xs:simpleContent>
+            <xs:extension base="xs:token">
+                <xs:attribute default="Other" name="Type" type="PhoneTypes" use="optional"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+    <xs:complexType name="ContactInfoType">
+        <xs:choice maxOccurs="unbounded" minOccurs="0">
+            <xs:element minOccurs="0" name="Addresses">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element maxOccurs="unbounded" minOccurs="0" name="Address" type="AddressType"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element minOccurs="0" name="Phones">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element maxOccurs="unbounded" minOccurs="0" name="Phone" type="PhoneType"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="Email" type="EmailType"/>
+        </xs:choice>
+    </xs:complexType>
+    <xs:complexType name="LinkType">
+        <xs:sequence>
+            <xs:element name="URI" type="xs:anyURI"/>
+        </xs:sequence>
+        <xs:attribute default="External" name="Type" type="LinkTypes" use="optional"/>
+    </xs:complexType>
+    <xs:complexType name="EventType">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="Participants">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element maxOccurs="unbounded" minOccurs="0" name="ParticipantRef" type="RefIdType"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element minOccurs="0" name="When" type="WhenType"/>
+            <xs:element minOccurs="0" name="Place" type="PlaceType"/>
+            <xs:element minOccurs="0" name="MultiMedia">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element maxOccurs="unbounded" minOccurs="0" name="MultiMediaRef" type="RefIdType"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element minOccurs="0" name="Citation">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element maxOccurs="unbounded" minOccurs="0" name="CitationRec" type="RefIdType"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element minOccurs="0" name="Document">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element maxOccurs="unbounded" minOccurs="0" name="DocumentRec" type="RefIdType"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute default="Unknown" name="Type" type="EventTypes" use="optional"/>
+    </xs:complexType>
+    <xs:complexType name="WhenType">
+        <xs:choice>
+            <xs:element name="TimePeriod">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="Begin" type="DateType"/>
+                        <xs:element minOccurs="0" name="End" type="DateType"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element minOccurs="0" name="TimePosition" type="DateType"/>
+            <xs:element minOccurs="0" name="Description" type="xs:string"/>
+        </xs:choice>
+    </xs:complexType>
+    <xs:complexType name="DateType">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="Date">
+                <xs:complexType>
+                    <xs:choice>
+                        <xs:element name="WorldStandardDate" type="SimpleDateType"/>
+                        <xs:element name="ChineseDate">
+                            <xs:complexType>
+                                <xs:sequence>
+                                    <xs:element name="ChineseDynastyDate" type="ChineseDynastyDateType"/>
+                                    <xs:element name="ChineseLunarDate" type="ChineseLunarDateType"/>
+                                </xs:sequence>
+                            </xs:complexType>
+                        </xs:element>
+                    </xs:choice>
+                    <xs:attribute default="Unknown" name="Calendar" type="CalendarTypes" use="optional"/>
+                </xs:complexType>
+            </xs:element>
+            <xs:element minOccurs="0" name="Time" type="TimeType"/>
+            <xs:element minOccurs="0" name="Era" type="xs:string"/>
+        </xs:sequence>
+        <xs:attribute default="About" name="Type" type="DateTypes" use="optional"/>
+    </xs:complexType>
+    <xs:complexType name="ChineseDynastyDateType">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="Dynasty" type="xs:string"/>
+            <xs:element minOccurs="0" name="Emperor" type="xs:string"/>
+            <xs:element minOccurs="0" name="Year" type="xs:string"/>
+            <xs:element minOccurs="0" name="Month" type="xs:string"/>
+            <xs:element minOccurs="0" name="Day" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="ChineseLunarDateType">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="LunarYear" type="xs:string"/>
+            <xs:element minOccurs="0" name="LunarMonth" type="xs:string"/>
+            <xs:element minOccurs="0" name="LunarDay" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="TimeType">
+        <xs:choice>
+            <xs:element name="WorldStandardTime" type="SimpleTimeType"/>
+            <xs:element name="ChineseAncientTime" type="ChineseAncientTimeType"/>
+        </xs:choice>
+    </xs:complexType>
+    <xs:complexType name="ChineseAncientTimeType">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="Hour" type="xs:string"/>
+            <xs:element minOccurs="0" name="Minute" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="PlaceType">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="ExistDate" type="WhenType"/>
+            <xs:element minOccurs="0" name="PlaceParts">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element maxOccurs="unbounded" minOccurs="0" name="PlacePart" type="PlacePartType"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="Geometry">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="GeometryType" type="GeometryTypes"/>
+                        <xs:element minOccurs="0" name="Coordinates" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element minOccurs="0" name="Description" type="xs:string"/>
+        </xs:sequence>
+        <xs:attribute default="Unknown" name="PeriodType" type="PeriodTypes" use="optional"/>
+    </xs:complexType>
+    <xs:complexType name="PlacePartType">
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute default="Unknown" name="Type" type="PlacePartTypes" use="optional"/>
+                <xs:attribute default="1" name="Level" type="xs:string" use="optional"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+    <xs:element name="Genealogy">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Metadata">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element minOccurs="0" name="Title" type="xs:string"/>
+                            <xs:element minOccurs="0" name="Keyword" type="xs:string"/>
+                            <xs:element minOccurs="0" name="Version" type="xs:string"/>
+                            <xs:element minOccurs="0" name="Language" type="xs:string"/>
+                            <xs:element name="CreateInfo">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element maxOccurs="unbounded" name="Creator" type="xs:string"/>
+                                        <xs:element minOccurs="0" name="When" type="WhenType"/>
+                                        <xs:element minOccurs="0" name="Place" type="PlaceType"/>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element maxOccurs="unbounded" name="ModifyInfo">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element maxOccurs="unbounded" name="Modifier" type="xs:string"/>
+                                        <xs:element minOccurs="0" name="When" type="WhenType"/>
+                                        <xs:element minOccurs="0" name="Place" type="PlaceType"/>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="ContactInfo">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element minOccurs="0" name="Name" type="xs:string"/>
+                                        <xs:element minOccurs="0" name="Organization" type="xs:string"/>
+                                        <xs:element minOccurs="0" name="Adress" type="xs:string"/>
+                                        <xs:element maxOccurs="unbounded" minOccurs="0" name="Phone" type="PhoneType"/>
+                                        <xs:element minOccurs="0" name="Fax" type="xs:string"/>
+                                        <xs:element minOccurs="0" name="Email" type="xs:string"/>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="PublishInfo">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element minOccurs="0" name="Publisher" type="xs:string"/>
+                                        <xs:element minOccurs="0" name="When" type="WhenType"/>
+                                        <xs:element minOccurs="0" name="Place" type="PlaceType"/>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="GenealogyInfo">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="Surname" type="xs:string"/>
+                                        <xs:element name="Ancestry" type="RefIdType"/>
+                                        <xs:element name="Settlement" type="xs:string"/>
+                                        <xs:element name="MemberNum" type="xs:integer"/>
+                                        <xs:element maxOccurs="unbounded" minOccurs="0" name="Notables" type="RefIdType"/>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element minOccurs="0" name="Note" type="xs:string"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element maxOccurs="unbounded" minOccurs="0" name="Individual">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="IndivName" type="IndivNameType"/>
+                            <xs:element minOccurs="0" name="Gender" type="GenderType"/>
+                            <xs:element minOccurs="0" name="Nationality" type="xs:string"/>
+                            <xs:element minOccurs="0" name="Religion" type="ReligionType"/>
+                            <xs:element minOccurs="0" name="Occupation" type="xs:string"/>
+                            <xs:element minOccurs="0" name="Existance" type="ExistanceType"/>
+                            <xs:element minOccurs="0" name="Generation" type="xs:string"/>
+                            <xs:element minOccurs="0" name="OrderOfBirth" type="xs:string"/>
+                            <xs:element minOccurs="0" name="ContactInfo" type="ContactInfoType"/>
+                            <xs:element minOccurs="0" name="FamReferTo">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element maxOccurs="unbounded" minOccurs="0" name="FamRef" type="RefIdType"/>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element minOccurs="0" name="Events">
+                                <xs:complexType>
+                                    <xs:choice>
+                                        <xs:element maxOccurs="unbounded" minOccurs="0" name="Event" type="EventType"/>
+                                        <xs:element maxOccurs="unbounded" minOccurs="0" name="EventRef" type="RefIdType"/>
+                                    </xs:choice>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element minOccurs="0" name="Document">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element maxOccurs="unbounded" minOccurs="0" name="DocumentRec" type="RefIdType"/>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element minOccurs="0" name="MultiMedia">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element maxOccurs="unbounded" minOccurs="0" name="MultiMediaRef" type="RefIdType"/>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element minOccurs="0" name="Citation">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element maxOccurs="unbounded" minOccurs="0" name="CitationRec" type="RefIdType"/>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                        <xs:attribute name="ID" type="xs:ID" use="required"/>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element maxOccurs="unbounded" minOccurs="0" name="Family">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="Husband">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="IndivRef" type="RefIdType"/>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element minOccurs="0" name="Wife">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element maxOccurs="unbounded" minOccurs="0" name="WifeRef">
+                                            <xs:complexType>
+                                                <xs:sequence>
+                                                    <xs:element minOccurs="0" name="WifeRank" type="xs:integer"/>
+                                                </xs:sequence>
+                                                <xs:attribute name="RefId" type="xs:IDREF" use="required"/>
+                                                <xs:attribute default="Unknown" name="Status" type="StatusTypes" use="optional"/>
+                                            </xs:complexType>
+                                        </xs:element>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element minOccurs="0" name="Child">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element maxOccurs="unbounded" minOccurs="0" name="ChildRef">
+                                            <xs:complexType>
+                                                <xs:sequence>
+                                                    <xs:element minOccurs="0" name="RelToFath" type="xs:string"/>
+                                                    <xs:element minOccurs="0" name="ChildOrder" type="xs:integer"/>
+                                                </xs:sequence>
+                                                <xs:attribute name="RefId" type="xs:IDREF" use="required"/>
+                                            </xs:complexType>
+                                        </xs:element>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element minOccurs="0" name="FamRefTo">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element maxOccurs="unbounded" minOccurs="0" name="ParentFamilyRef" type="RefIdType"/>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element minOccurs="0" name="GroupRefTo">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element maxOccurs="unbounded" minOccurs="0" name="GroupRef" type="RefIdType"/>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element minOccurs="0" name="Events">
+                                <xs:complexType>
+                                    <xs:choice>
+                                        <xs:element maxOccurs="unbounded" minOccurs="0" name="Event" type="EventType"/>
+                                        <xs:element maxOccurs="unbounded" minOccurs="0" name="EventRef" type="RefIdType"/>
+                                    </xs:choice>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element minOccurs="0" name="MultiMedia">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element maxOccurs="unbounded" minOccurs="0" name="MultiMediaRef" type="RefIdType"/>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element minOccurs="0" name="Citation">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element maxOccurs="unbounded" minOccurs="0" name="CitationRec" type="RefIdType"/>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element minOccurs="0" name="Document">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element maxOccurs="unbounded" minOccurs="0" name="DocumentRec" type="RefIdType"/>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                        <xs:attribute name="ID" type="xs:ID" use="required"/>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element maxOccurs="unbounded" minOccurs="0" name="Group">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element minOccurs="0" name="GroupName" type="xs:string"/>
+                            <xs:element name="Members">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element maxOccurs="unbounded" minOccurs="0" name="MemberRef" type="RefIdType"/>
+                                    </xs:sequence>
+                                    <xs:attribute default="Unknown" name="Role" type="GroupMemberRoleTypes" use="optional"/>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element minOccurs="0" name="GroupRefTo">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element maxOccurs="unbounded" minOccurs="0" name="ParentGroupRef" type="RefIdType"/>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element minOccurs="0" name="Events">
+                                <xs:complexType>
+                                    <xs:choice>
+                                        <xs:element maxOccurs="unbounded" minOccurs="0" name="Event" type="EventType"/>
+                                        <xs:element maxOccurs="unbounded" minOccurs="0" name="EventRef" type="RefIdType"/>
+                                    </xs:choice>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element minOccurs="0" name="MultiMedia">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element maxOccurs="unbounded" minOccurs="0" name="MultiMediaRef" type="RefIdType"/>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element minOccurs="0" name="Citation">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element maxOccurs="unbounded" minOccurs="0" name="CitationRec" type="RefIdType"/>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element minOccurs="0" name="Document">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element maxOccurs="unbounded" minOccurs="0" name="DocumentRec" type="RefIdType"/>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                        <xs:attribute name="ID" type="xs:ID" use="required"/>
+                        <xs:attribute default="Unknown" name="Type" type="GroupTypes" use="optional"/>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element maxOccurs="unbounded" minOccurs="0" name="DocumentRec">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element minOccurs="0" name="Title" type="xs:string"/>
+                            <xs:element minOccurs="0" name="Author" type="xs:string"/>
+                            <xs:element minOccurs="0" name="DetailText" type="xs:string"/>
+                            <xs:element minOccurs="0" name="Publishing" type="xs:string"/>
+                            <xs:element minOccurs="0" name="Note" type="xs:string"/>
+                            <xs:element minOccurs="0" name="Link" type="LinkType"/>
+                            <xs:element minOccurs="0" name="MultiMedia">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element maxOccurs="unbounded" minOccurs="0" name="MultiMediaRef" type="RefIdType"/>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                        <xs:attribute name="ID" type="xs:ID" use="required"/>
+                        <xs:attribute default="Unknown" name="Type" type="DocumentTypes" use="optional"/>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element maxOccurs="unbounded" minOccurs="0" name="CitationRec">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element minOccurs="0" name="Title" type="xs:string"/>
+                            <xs:element minOccurs="0" name="Author" type="xs:string"/>
+                            <xs:element minOccurs="0" name="ExtractText" type="xs:string"/>
+                            <xs:element minOccurs="0" name="Link" type="LinkType"/>
+                            <xs:element minOccurs="0" name="MultiMedia">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element maxOccurs="unbounded" minOccurs="0" name="MultiMediaRef" type="RefIdType"/>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                        <xs:attribute name="ID" type="xs:ID" use="required"/>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element maxOccurs="unbounded" minOccurs="0" name="MultiMediaRec">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element minOccurs="0" name="Title" type="xs:string"/>
+                            <xs:element minOccurs="0" name="Description" type="xs:string"/>
+                            <xs:element name="Type" type="MultiMediaTypes"/>
+                            <xs:element minOccurs="0" name="Format" type="xs:string"/>
+                            <xs:element minOccurs="0" name="Link" type="LinkType"/>
+                        </xs:sequence>
+                        <xs:attribute name="ID" type="xs:ID" use="required"/>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="EventRec">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element maxOccurs="unbounded" minOccurs="0" name="Description" type="xs:string"/>
+                            <xs:element name="EventType" type="EventTypes"/>
+                            <xs:element minOccurs="0" name="Participants">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element maxOccurs="unbounded" minOccurs="0" name="Participant">
+                                            <xs:complexType>
+                                                <xs:sequence>
+                                                    <xs:element minOccurs="0" name="ParticipantRef" type="RefIdType"/>
+                                                    <xs:element minOccurs="0" name="Role" type="xs:string"/>
+                                                </xs:sequence>
+                                            </xs:complexType>
+                                        </xs:element>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element minOccurs="0" name="When" type="WhenType"/>
+                            <xs:element minOccurs="0" name="Place" type="PlaceType"/>
+                            <xs:element minOccurs="0" name="MultiMedia">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element maxOccurs="unbounded" minOccurs="0" name="MultiMediaRef" type="RefIdType"/>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element minOccurs="0" name="Citation">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element maxOccurs="unbounded" minOccurs="0" name="CitationRec" type="RefIdType"/>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element minOccurs="0" name="Document">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element maxOccurs="unbounded" minOccurs="0" name="DocumentRec" type="RefIdType"/>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                        <xs:attribute name="ID" type="xs:ID" use="required"/>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

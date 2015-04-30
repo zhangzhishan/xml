@@ -8,10 +8,46 @@
 <meta name="keywords" content="" />
 <meta name="description" content="" />
 <link type="text/css" rel="stylesheet" href="lTREE.2.css" />
+<!-- 新 Bootstrap 核心 CSS 文件 -->
+<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.4/css/bootstrap.min.css">
 <style type="text/css">
 #lTREEMenuDEMO {width:100%;border:1px solid #ccc;margin:3px;padding:3px;}
 #infoBox {position:absolute;left:450px;top:40px;border:1px solid #ccc;width:400px;padding:0 10px;font-family:Geneva,Arial,sans-serif;line-height:150%;}
 #debugMSG strong {color:#f00;}
+.button{
+    font-weight: bold;
+    text-transform: uppercase;
+    font-family: verdana;
+    border: 1px solid #282727;
+    font-size: 1.2em;
+    line-height: 1.25em;
+    padding: 3px 10px;
+    border-radius: 12px;
+    -moz-border-radius: 12px;
+    -webkit-border-radius: 12px;
+    box-shadow: 1px 2px 3px #555;
+    -moz-box-shadow: 1px 2px 3px #555;
+    -webkit-box-shadow: 1px 2px 3px #555;
+}
+.contents{
+    font-weight: bold;
+    background-color: #00ff00;
+    text-transform: uppercase;
+    font-family: verdana;
+    border: 1px solid #282727;
+    font-size: 1.2em;
+    line-height: 1.25em;
+    padding: 3px 10px;
+    border-radius: 12px;
+    -moz-border-radius: 12px;
+    -webkit-border-radius: 12px;
+    box-shadow: 1px 2px 3px #555;
+    -moz-box-shadow: 1px 2px 3px #555;
+    -webkit-box-shadow: 1px 2px 3px #555;
+}
+body{
+    margin:auto;width:1600px; border:solid 1px #000;
+}
 </style>
 <!--[if IE 6]>
 <script>
@@ -21,10 +57,15 @@ document.execCommand("BackgroundImageCache", false, true);
 </head>
 <body>
 <!--lTREEMenu Start:-->
+<div class="page-header">
+  <h1>Genealogy Schema Design<small>A web demo</small></h1>
+</div>
+<ul class="nav nav-pills">
+  <li role="presentation" class="active"><a href="index.php">Home</a></li>
+  <li role="presentation"><a href="add.php">Add</a></li>
+  <li role="presentation"><a href="search.php">Search</a></li>
+</ul>
 <div class="lTREEMenu lTREENormal" id="lTREEMenuDEMO">
-    <form action="search.php">
-    <dl>Last name<input type="text" name="search" value=""> <input type="submit" value="search"> <a href="add.php">Add</a> </dl>
-    </form>
 <?php
 $path='persons.xml';
 $persons=new DOMDocument();
@@ -40,6 +81,7 @@ $personElements=$persons->getElementsByTagName('person');
         $halfarr[$cid]=$arr['first'].$arr['name'];
         }
 function persionmenu($personElements,$preid=0,$halfarr){
+    echo "<br />";
     foreach($personElements as $person) {
         foreach ($person->getElementsByTagName('pid') as $pid) {
             $pid= $pid->nodeValue;
@@ -51,9 +93,6 @@ function persionmenu($personElements,$preid=0,$halfarr){
         foreach ($person->getElementsByTagName('halfid') as $halfid) {
             $halfid = $halfid->nodeValue;
         }
-          if ($arr['name']=="Male") {
-            $wantsex ="Female";
-          }
         if($halfid>0){
             $will="Divorce";
         	$marry="Married";
@@ -61,8 +100,8 @@ function persionmenu($personElements,$preid=0,$halfarr){
             $will="Marry";
         	$marry="Single";
         }
-        echo "<dl>";
         if($preid==$pid){
+            echo "<dl>";
             $arr = array();
             foreach ($person->attributes as $attr) {
                 $arr[$attr->nodeName] = $attr->nodeValue;
@@ -76,10 +115,12 @@ function persionmenu($personElements,$preid=0,$halfarr){
             }else{
                 $other='';
             }
-            echo $cid."&nbsp;".$arr['first']. $arr['name'].$other.'|'.$marry.'|'. $arr['sex'].'|'.$arr['birthday'].'|[<a href=marry.php?wantsex='.$wantsex.'&type='.$will.'&id='.$cid.'>'.$will.'</a>][<a href=add.php?id='.$cid.'>Add</a>][<a href=modify.php?id='.$cid.'>Modify</a>][<a href=delete.php?id='.$cid.'>Delete</a>]';
+            echo '<span class="contents">'.$cid."&nbsp;".$arr['first']. $arr['name'].$other.'|'.$marry.'|'. $arr['sex'].'|'.$arr['birthday'].'</span>'.'<a class="button" href=marry.php?wantsex='.$wantsex.'&type='.$will.'&id='.$cid.'>'.$will.'</a><a href=add.php?id='.$cid.' class="button">Add</a><a href=modify.php?id='.$cid.' class="button">Modify</a><a href=delete.php?id='.$cid.' class="button">Delete</a>';
+            echo "<br />";
             persionmenu($personElements,$cid,$halfarr);
+            echo "</dl>";
         }
-        echo "</dl>";
+        
     }
 }
 persionmenu($personElements,0,$halfarr);

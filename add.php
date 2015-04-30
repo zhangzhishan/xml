@@ -1,6 +1,17 @@
 <html>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" lang="en"/>
+<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.4/css/bootstrap.min.css">
 <body>
+
+<div class="page-header">
+  <h1>Genealogy Schema Design<small>A web demo</small></h1>
+</div>
+<ul class="nav nav-pills">
+  <li role="presentation" ><a href="index.php">Home</a></li>
+  <li role="presentation" class="active"><a href="add.php">Add</a></li>
+  <li role="presentation"><a href="search.php">Search</a></li>
+</ul>
+<div class="lTREEMenu lTREENormal" id="lTREEMenuDEMO">
 <?php
 $path='persons.xml';
 $persons=new DOMDocument();
@@ -60,10 +71,6 @@ if(isset($_GET['pid'])){
 
 }
 ?>
-
-
-
-
 <form   action="" method="get">
    Last branch:<?php echo isset($_GET['id'])?"":"The top branch"?><input type="hidden" name="pid" value="<?php echo isset($_GET['id'])?$_GET['id']:0?>"><br>
    Last name<input type="input"  name="first">First name<input type="input"  name="name"><br>
