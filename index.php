@@ -116,7 +116,7 @@ function persionmenu($personElements,$preid=0,$halfarr){
             }else{
                 $other='';
             }
-            echo '<span class="contents">'.$cid."&nbsp;".$arr['first']. $arr['name'].$other.'|'.$marry.'|'. $arr['sex'].'|'.$arr['birthday'].'</span>'.'<a class="button" href=marry.php?wantsex='.$wantsex.'&type='.$will.'&id='.$cid.'>'.$will.'</a><a href=add.php?id='.$cid.' class="button">Add</a><a href=modify.php?id='.$cid.' class="button">Modify</a><a href=delete.php?id='.$cid.' class="button">Delete</a>';
+            echo '<span class="contents">'.$cid."&nbsp;".$arr['name'].' '. $arr['first'].$other.'|'.$marry.'|'. $arr['sex'].'|'.$arr['birthday'].'</span>'.'<a class="button" href=marry.php?wantsex='.$wantsex.'&type='.$will.'&id='.$cid.'>'.$will.'</a><a href=add.php?id='.$cid.' class="button">Add</a><a href=modify.php?id='.$cid.' class="button">Modify</a><a href=delete.php?id='.$cid.' class="button">Delete</a>';
             echo "<br />";
             persionmenu($personElements,$cid,$halfarr);
             echo "</dl>";
