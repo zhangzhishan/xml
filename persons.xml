@@ -5,7 +5,7 @@
         <pid>0</pid>
         <halfid>0</halfid>
     </person>
-    <person birthday="1977-7-8" first="Potter" name="Joe" sex="Female">
+    <person birthday="1977-5-8" first="Potter" name="Joe" sex="Female">
         <cid>2</cid>
         <pid>0</pid>
         <halfid>8</halfid>
@@ -65,4 +65,4 @@
         <pid>12</pid>
         <halfid>0</halfid>
     </person>
-<person first="fdf" name="adfdf" sex="Male" birthday="2014-02-12"><cid>14</cid><pid>6</pid></person><person first="heihei" name="haha" sex="Male" birthday="2014-02-12"><cid>15</cid><pid>2</pid></person></persons>
+<person first="fdf" name="adfdf" sex="Male" birthday="2014-02-12"><cid>14</cid><pid>6</pid></person><person first="heihei" name="haha" sex="Male" birthday="2014-02-12"><cid>15</cid><pid>2</pid></person><person first="hei" name="ha" sex="Male" birthday="2011-09-02"><cid>16</cid><pid>0</pid></person></persons>

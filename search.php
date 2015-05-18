@@ -28,6 +28,7 @@ document.execCommand("BackgroundImageCache", false, true);
   <li role="presentation" ><a href="index.php">Home</a></li>
   <li role="presentation" ><a href="add.php">Add</a></li>
   <li role="presentation" class="active"><a href="search.php">Search</a></li>
+  <li role="presentation"><a href="persons.xml">XML Output</a></li>
 </ul>
 <div class="input-group">
     <form action="search.php" >
