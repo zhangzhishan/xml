@@ -1,13 +1,13 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <?php
-$path='persons.xml';
-$persons=new DOMDocument();
-$persons->load($path);
-$personElements=$persons->getElementsByTagName('person');
+$path='gen.xml';
+$gen=new DOMDocument();
+$gen->load($path);
+$individualElements=$gen->getElementsByTagName('individual');
 if(isset($_GET['id'])) {
 
-    foreach ($personElements as $person) {
-        foreach ($person->getElementsByTagName('pid') as $newcid) {
+    foreach ($individualElements as $individual) {
+        foreach ($individual->getElementsByTagName('pid') as $newcid) {
             if ($newcid->nodeValue == $_GET['id']) {
                 exit('Cannot delete the branch with sub-element：：<a href=".">Back</a>');
             }
@@ -15,17 +15,17 @@ if(isset($_GET['id'])) {
     }
 
     $i = 0;
-    foreach ($personElements as $person) {
-        foreach ($person->getElementsByTagName('cid') as $cid) {
+    foreach ($individualElements as $individual) {
+        foreach ($individual->getElementsByTagName('cid') as $cid) {
             $cid = $cid->nodeValue;
         }
             if ($cid == $_GET['id']) {
-                $deleteitem = $personElements->item($i);
+                $deleteitem = $individualElements->item($i);
                 $deleteitem->parentNode->removeChild($deleteitem);
             }
             $i++;
         }
-        if ($persons->save($path) > 0) {
+        if ($gen->save($path) > 0) {
             exit('Delete Success!：：<a href=".">Back</a>');
         } else {
             exit('Delete Failed!：：<a href=".">Back</a>');

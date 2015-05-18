@@ -12,13 +12,13 @@
   <li role="presentation" ><a href="search.php">Search</a></li>
 </ul>
 <?php
-$path='persons.xml';
-$persons=new DOMDocument();
-$persons->load($path);
-$personElements=$persons->getElementsByTagName('person');
+$path='gen.xml';
+$gen=new DOMDocument();
+$gen->load($path);
+$individualElements=$gen->getElementsByTagName('individual');
 if(isset($_GET['pid'])){
-    foreach($personElements as $person){
-        foreach ($person->getElementsByTagName('cid') as $cid) {
+    foreach($individualElements as $individual){
+        foreach ($individual->getElementsByTagName('cid') as $cid) {
             $cid = $cid->nodeValue;
         }
         if (!preg_match("/^\d{4}-\d{1,2}-\d{1,2}$/",$_GET['birthday'])){
@@ -26,10 +26,10 @@ if(isset($_GET['pid'])){
         }
         if($cid==$_GET['id']){
             if($_GET['pid']!=0){
-                foreach($personElements as $person){
-                    foreach ($person->getElementsByTagName('cid') as $newcid) {
+                foreach($individualElements as $individual){
+                    foreach ($individual->getElementsByTagName('cid') as $newcid) {
                         if($newcid->nodeValue==$_GET['pid']){
-                            foreach ($person->attributes as $attr) {
+                            foreach ($individual->attributes as $attr) {
                                 $arr[$attr->nodeName] = $attr->nodeValue;
                             }
                             if(strtotime( $arr['birthday'])>= strtotime($_GET['birthday'])){
@@ -39,15 +39,15 @@ if(isset($_GET['pid'])){
                     }
                 }
             }
-            foreach ($person->attributes as $attr) {
-                if($attr->nodeName=='first'){
-                    $attr->nodeValue=$_GET['first'];
+            foreach ($individual->attributes as $attr) {
+                if($attr->nodeName=='lastname'){
+                    $attr->nodeValue=$_GET['lastname'];
                 }
                 if($attr->nodeName=='name'){
                     $attr->nodeValue=$_GET['name'];
                 }
-                if($attr->nodeName=='first'){
-                    $attr->nodeValue=$_GET['first'];
+                if($attr->nodeName=='lastname'){
+                    $attr->nodeValue=$_GET['lastname'];
                 }
                 if($attr->nodeName=='sex'){
                     $attr->nodeValue=$_GET['sex'];
@@ -59,21 +59,21 @@ if(isset($_GET['pid'])){
         }
 
     }
-    if($persons->save($path)>0){
+    if($gen->save($path)>0){
         exit('Edit success：：<a href=".">Back</a>');
     }else{
         exit('Edit Failed!：：<a href=".">Back</a>');
     }
 }
-foreach($personElements as $person) {
-    foreach ($person->getElementsByTagName('cid') as $cid) {
+foreach($individualElements as $individual) {
+    foreach ($individual->getElementsByTagName('cid') as $cid) {
         $cid = $cid->nodeValue;
     }
    if($cid==$_GET['id']){
-       foreach ($person->getElementsByTagName('pid') as $pid) {
+       foreach ($individual->getElementsByTagName('pid') as $pid) {
            $pid= $pid->nodeValue;
        }
-       foreach ($person->attributes as $attr) {
+       foreach ($individual->attributes as $attr) {
            $arr[$attr->nodeName] = $attr->nodeValue;
        }
    }
@@ -82,7 +82,7 @@ foreach($personElements as $person) {
 <form   action="">
     <input type="hidden" name="id" value="<?php echo isset($_GET['id'])?$_GET['id']:0?>">
     The last branch:<?php echo isset($_GET['id'])?"":"The last branch"?><input type="hidden" name="pid" value="<?php echo $pid ?>"><br>
-    Last name<input type="input"  name="first" value="<?php echo $arr['first']?>">First name<input type="input"  name="name" value="<?php echo $arr['name']?>"><br>
+    Last name<input type="input"  name="lastname" value="<?php echo $arr['lastname']?>">First name<input type="input"  name="name" value="<?php echo $arr['name']?>"><br>
     Sex<select name="sex">
         <option value="Male" <?php if($arr['sex']=="Male"){echo "selected";}?>>Male</option>
         <option value="Female" <?php if($arr['sex']=="Female"){echo "selected";}?>>Female</option>

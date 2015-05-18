@@ -8,7 +8,6 @@
 <meta name="keywords" content="" />
 <meta name="description" content="" />
 <link type="text/css" rel="stylesheet" href="lTREE.2.css" />
-<!-- 新 Bootstrap 核心 CSS 文件 -->
 <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.4/css/bootstrap.min.css">
 <style type="text/css">
 #lTREEMenuDEMO {width:100%;border:1px solid #ccc;margin:3px;padding:3px;}
@@ -64,34 +63,34 @@ document.execCommand("BackgroundImageCache", false, true);
   <li role="presentation" class="active"><a href="index.php">Home</a></li>
   <li role="presentation"><a href="add.php">Add</a></li>
   <li role="presentation"><a href="search.php">Search</a></li>
-  <li role="presentation"><a href="persons.xml">XML Output</a></li>
+  <li role="presentation"><a href="gen.xml">XML Output</a></li>
 </ul>
 <div class="lTREEMenu lTREENormal" id="lTREEMenuDEMO">
 <?php
-$path='persons.xml';
-$persons=new DOMDocument();
-$persons->load($path);
-$personElements=$persons->getElementsByTagName('person');
-        foreach($personElements as $person){
-             foreach ($person->getElementsByTagName('cid') as $cid) {
+$path='gen.xml';
+$gen=new DOMDocument();
+$gen->load($path);
+$individualElements=$gen->getElementsByTagName('individual');
+        foreach($individualElements as $individual){
+             foreach ($individual->getElementsByTagName('cid') as $cid) {
                 $cid= $cid->nodeValue;
             }
-           foreach ($person->attributes as $attr) {
+           foreach ($individual->attributes as $attr) {
                 $arr[$attr->nodeName] = $attr->nodeValue;
             }
-        $halfarr[$cid]=$arr['first'].$arr['name'];
+        $halfarr[$cid]=$arr['lastname'].$arr['name'];
         }
-function persionmenu($personElements,$preid=0,$halfarr){
+function persionmenu($individualElements,$preid=0,$halfarr){
     echo "<br />";
-    foreach($personElements as $person) {
-        foreach ($person->getElementsByTagName('pid') as $pid) {
+    foreach($individualElements as $individual) {
+        foreach ($individual->getElementsByTagName('pid') as $pid) {
             $pid= $pid->nodeValue;
         }
-        foreach ($person->getElementsByTagName('cid') as $cid) {
+        foreach ($individual->getElementsByTagName('cid') as $cid) {
             $cid = $cid->nodeValue;
         }
 
-        foreach ($person->getElementsByTagName('halfid') as $halfid) {
+        foreach ($individual->getElementsByTagName('halfid') as $halfid) {
             $halfid = $halfid->nodeValue;
         }
         if($halfid>0){
@@ -104,7 +103,7 @@ function persionmenu($personElements,$preid=0,$halfarr){
         if($preid==$pid){
             echo "<dl>";
             $arr = array();
-            foreach ($person->attributes as $attr) {
+            foreach ($individual->attributes as $attr) {
                 $arr[$attr->nodeName] = $attr->nodeValue;
             }
             if ($arr['sex']=="Male") {
@@ -116,15 +115,15 @@ function persionmenu($personElements,$preid=0,$halfarr){
             }else{
                 $other='';
             }
-            echo '<span class="contents">'.$cid."&nbsp;".$arr['name'].' '. $arr['first'].$other.'|'.$marry.'|'. $arr['sex'].'|'.$arr['birthday'].'</span>'.'<a class="button" href=marry.php?wantsex='.$wantsex.'&type='.$will.'&id='.$cid.'>'.$will.'</a><a href=add.php?id='.$cid.' class="button">Add</a><a href=modify.php?id='.$cid.' class="button">Modify</a><a href=delete.php?id='.$cid.' class="button">Delete</a>';
+            echo '<span class="contents">'.$cid."&nbsp;".$arr['lastname']. $arr['name'].$other.'|'.$marry.'|'. $arr['sex'].'|'.$arr['birthday'].'</span>'.'<a class="button" href=marry.php?wantsex='.$wantsex.'&type='.$will.'&id='.$cid.'>'.$will.'</a><a href=add.php?id='.$cid.' class="button">Add</a><a href=modify.php?id='.$cid.' class="button">Modify</a><a href=delete.php?id='.$cid.' class="button">Delete</a>';
             echo "<br />";
-            persionmenu($personElements,$cid,$halfarr);
+            persionmenu($individualElements,$cid,$halfarr);
             echo "</dl>";
         }
         
     }
 }
-persionmenu($personElements,0,$halfarr);
+persionmenu($individualElements,0,$halfarr);
 ?>
 </div>
 

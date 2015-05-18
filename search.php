@@ -28,7 +28,6 @@ document.execCommand("BackgroundImageCache", false, true);
   <li role="presentation" ><a href="index.php">Home</a></li>
   <li role="presentation" ><a href="add.php">Add</a></li>
   <li role="presentation" class="active"><a href="search.php">Search</a></li>
-  <li role="presentation"><a href="persons.xml">XML Output</a></li>
 </ul>
 <div class="input-group">
     <form action="search.php" >
@@ -40,25 +39,25 @@ document.execCommand("BackgroundImageCache", false, true);
 <!--lTREEMenu Start:-->
 <div class="lTREEMenu lTREENormal" id="lTREEMenuDEMO">
 <?php
-$path='persons.xml';
-$persons=new DOMDocument();
-$persons->load($path);
-$personElements=$persons->getElementsByTagName('person');
+$path='gen.xml';
+$gen=new DOMDocument();
+$gen->load($path);
+$individualElements=$gen->getElementsByTagName('individual');
 $arrs=array();
-foreach($personElements as $person) {
-    foreach ($person->attributes as $attr) {
+foreach($individualElements as $individual) {
+    foreach ($individual->attributes as $attr) {
         $arr[$attr->nodeName] = $attr->nodeValue;
     }
-    foreach ($person->getElementsByTagName('pid') as $pid) {
+    foreach ($individual->getElementsByTagName('pid') as $pid) {
         $arr['pid']= $pid->nodeValue;
     }
-    foreach ($person->getElementsByTagName('cid') as $cid) {
+    foreach ($individual->getElementsByTagName('cid') as $cid) {
         $arr['id'] = $cid->nodeValue;
     }
     $arrs[]=$arr;
-   /*if($arr['first']==$_GET['search']){
+   /*if($arr['lastname']==$_GET['search']){
 
-        $arr['name']= $cid."&nbsp;".$arr['first']. $arr['name'].'|'. $arr['sex'].'|'.$arr['birthday'];
+        $arr['name']= $cid."&nbsp;".$arr['lastname']. $arr['name'].'|'. $arr['sex'].'|'.$arr['birthday'];
 
         $arrs[]=array( "id"=> $arr['id']  ,'name'=>$arr['name']);
 
@@ -67,9 +66,9 @@ foreach($personElements as $person) {
 foreach($arrs as $item){
 
     if ($_GET) {
-        if($item['first']==$_GET['search']){
+        if($item['lastname']==$_GET['search']){
 
-       $name= $item['id']."&nbsp;". $item['name'].' '.$item['first'].'|'. $item['sex'].'|'.$item['birthday'];
+       $name= $item['id']."&nbsp;". $item['name'].' '.$item['lastname'].'|'. $item['sex'].'|'.$item['birthday'];
       echo "<dl>".$name."</dl>";
 
     }

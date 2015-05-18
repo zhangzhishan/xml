@@ -10,17 +10,16 @@
   <li role="presentation" ><a href="index.php">Home</a></li>
   <li role="presentation" class="active"><a href="add.php">Add</a></li>
   <li role="presentation"><a href="search.php">Search</a></li>
-  <li role="presentation"><a href="persons.xml">XML Output</a></li>
 </ul>
 <div class="lTREEMenu lTREENormal" id="lTREEMenuDEMO">
 <?php
-$path='persons.xml';
-$persons=new DOMDocument();
-$persons->load($path);
+$path='gen.xml';
+$gen=new DOMDocument();
+$gen->load($path);
 if(isset($_GET['pid'])){
-    $personElements=$persons->getElementsByTagName('person');
-    foreach($personElements as $person){
-       foreach ($person->getElementsByTagName('cid') as $newcid) {
+    $individualElements=$gen->getElementsByTagName('individual');
+    foreach($individualElements as $individual){
+       foreach ($individual->getElementsByTagName('cid') as $newcid) {
             $cids[] = $newcid->nodeValue;
         }
     }
@@ -36,10 +35,10 @@ if(isset($_GET['pid'])){
 
 
 
-        foreach($personElements as $person){
-            foreach ($person->getElementsByTagName('cid') as $newcid) {
+        foreach($individualElements as $individual){
+            foreach ($individual->getElementsByTagName('cid') as $newcid) {
              if($newcid->nodeValue==$_GET['pid']){
-                 foreach ($person->attributes as $attr) {
+                 foreach ($individual->attributes as $attr) {
                      $arr[$attr->nodeName] = $attr->nodeValue;
                  }
                  if(strtotime( $arr['birthday'])>= strtotime($_GET['birthday'])){
@@ -50,21 +49,21 @@ if(isset($_GET['pid'])){
         }
     }
 
-        $person=$persons->createElement('person'); #create the new element
-        $person->setAttribute('first',$_GET['first']);
-        $person->setAttribute('name',$_GET['name']);
-        $person->setAttribute('sex',$_GET['sex']);
-        $person->setAttribute('birthday',$_GET['birthday']);
+        $individual=$gen->createElement('individual'); #create the new element
+        $individual->setAttribute('lastname',$_GET['lastname']);
+        $individual->setAttribute('name',$_GET['name']);
+        $individual->setAttribute('sex',$_GET['sex']);
+        $individual->setAttribute('birthday',$_GET['birthday']);
 
-        $cid=$persons->createElement('cid');# create the sub-element
+        $cid=$gen->createElement('cid');# create the sub-element
         $cid->nodeValue =max($cids)+1;
 
-        $person->appendChild($cid);#append the child element to the father element
-        $pid=$persons->createElement('pid');# create the child element
+        $individual->appendChild($cid);#append the child element to the father element
+        $pid=$gen->createElement('pid');# create the child element
         $pid->nodeValue=$_GET['pid'];
-        $person->appendChild($pid);#add the child element to the father element
-    $persons->documentElement->appendChild($person);#add the whole branch
-    if($persons->save($path)>0){
+        $individual->appendChild($pid);#add the child element to the father element
+    $gen->documentElement->appendChild($individual);#add the whole branch
+    if($gen->save($path)>0){
         exit('Add success：：<a href=".">Back</a>');
     }else{
         exit('Add wrong：：<a href=".">Back</a>');
@@ -74,7 +73,7 @@ if(isset($_GET['pid'])){
 ?>
 <form   action="" method="get">
    Last branch:<?php echo isset($_GET['id'])?"":"The top branch"?><input type="hidden" name="pid" value="<?php echo isset($_GET['id'])?$_GET['id']:0?>"><br>
-   Last name<input type="input"  name="first">First name<input type="input"  name="name"><br>
+   Last name<input type="input"  name="lastname">First name<input type="input"  name="name"><br>
     Sex<select name="sex">
         <option value="Male">Male</option>
         <option value="Female">Female</option>

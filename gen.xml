@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<gen xmlns:xs="http://www.w3.org/2001/XMLSchema" xml:schemaLocation="http://localhost/xml/gen.xsd">
+    <individual birthday="1970-7-8" lastname="Nuhn" name="Harry" sex="Male">
+        <cid>1</cid>
+        <pid>0</pid>
+        <halfid>0</halfid>
+    </individual>
+    <individual birthday="1977-7-8" lastname="Potter" name="Joe" sex="Female">
+        <cid>2</cid>
+        <pid>0</pid>
+        <halfid>8</halfid>
+    </individual>
+    <individual birthday="1974-7-8" lastname="White" name="Mike" sex="Female">
+        <cid>3</cid>
+        <pid>1</pid>
+        <halfid>0</halfid>
+    </individual>
+    <individual birthday="1984-7-8" lastname="White" name="Georgia" sex="Female">
+        <cid>4</cid>
+        <pid>3</pid>
+        <halfid>0</halfid>
+    </individual>
+    <individual birthday="1974-7-8" lastname="Black" name="Frank" sex="Male">
+        <cid>5</cid>
+        <pid>1</pid>
+        <halfid>0</halfid>
+    </individual>
+    <individual birthday="1978-7-8" lastname="Lee" name="Bob" sex="Male">
+        <cid>6</cid>
+        <pid>3</pid>
+        <halfid>0</halfid>
+    </individual>
+    <individual birthday="1960-7-8" lastname="Green" name="Danny" sex="Male">
+        <cid>7</cid>
+        <pid>0</pid>
+        <halfid>0</halfid>
+    </individual>
+    <individual birthday="1974-7-8" lastname="Lee" name="Jack" sex="Male">
+        <cid>8</cid>
+        <pid>0</pid>
+        <halfid>2</halfid>
+    </individual>
+    <individual birthday="1974-7-8" lastname="Black" name="Jakkie" sex="Male">
+        <cid>9</cid>
+        <pid>0</pid>
+        <halfid>0</halfid>
+    </individual>
+    <individual birthday="1970-7-8" lastname="Green" name="John" sex="Male">
+        <cid>10</cid>
+        <pid>0</pid>
+        <halfid>0</halfid>
+    </individual>
+    <individual birthday="1979-8-9" lastname="Lee" name="Juddy" sex="Male">
+        <cid>11</cid>
+        <pid>6</pid>
+        <halfid>0</halfid>
+    </individual>
+    <individual birthday="1974-7-8" lastname="Lee" name="Lizy" sex="Female">
+        <cid>12</cid>
+        <pid>0</pid>
+        <halfid>0</halfid>
+    </individual>
+    <individual birthday="1980-8-8" lastname="Lee" name="Richard" sex="Male">
+        <cid>13</cid>
+        <pid>12</pid>
+        <halfid>0</halfid>
+    </individual>
+<individual lastname="fdf" name="adfdf" sex="Male" birthday="2014-02-12"><cid>14</cid><pid>6</pid></individual><individual lastname="heihei" name="haha" sex="Male" birthday="2014-02-12"><cid>15</cid><pid>2</pid></individual></gen>
