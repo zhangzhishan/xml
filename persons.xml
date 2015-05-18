@@ -3,12 +3,12 @@
     <person birthday="1970-7-8" first="Nuhn" name="Harry" sex="Male">
         <cid>1</cid>
         <pid>0</pid>
-        <halfid>2</halfid>
+        <halfid>0</halfid>
     </person>
     <person birthday="1977-7-8" first="Potter" name="Joe" sex="Female">
         <cid>2</cid>
         <pid>0</pid>
-        <halfid>1</halfid>
+        <halfid>8</halfid>
     </person>
     <person birthday="1974-7-8" first="White" name="Mike" sex="Female">
         <cid>3</cid>
@@ -38,7 +38,7 @@
     <person birthday="1974-7-8" first="Lee" name="Jack" sex="Male">
         <cid>8</cid>
         <pid>0</pid>
-        <halfid>0</halfid>
+        <halfid>2</halfid>
     </person>
     <person birthday="1974-7-8" first="Black" name="Jakkie" sex="Male">
         <cid>9</cid>
@@ -65,4 +65,4 @@
         <pid>12</pid>
         <halfid>0</halfid>
     </person>
-</persons>
+<person first="fdf" name="adfdf" sex="Male" birthday="2014-02-12"><cid>14</cid><pid>6</pid></person><person first="heihei" name="haha" sex="Male" birthday="2014-02-12"><cid>15</cid><pid>2</pid></person></persons>

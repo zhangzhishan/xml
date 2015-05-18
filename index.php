@@ -64,6 +64,7 @@ document.execCommand("BackgroundImageCache", false, true);
   <li role="presentation" class="active"><a href="index.php">Home</a></li>
   <li role="presentation"><a href="add.php">Add</a></li>
   <li role="presentation"><a href="search.php">Search</a></li>
+  <li role="presentation"><a href="persons.xml">XML Output</a></li>
 </ul>
 <div class="lTREEMenu lTREENormal" id="lTREEMenuDEMO">
 <?php
