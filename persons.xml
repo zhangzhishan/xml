@@ -3,7 +3,7 @@
     <person birthday="1970-7-8" first="Nuhn" name="Harry" sex="Male">
         <cid>1</cid>
         <pid>0</pid>
-        <halfid>0</halfid>
+        <halfid>12</halfid>
     </person>
     <person birthday="1977-5-8" first="Potter" name="Joe" sex="Female">
         <cid>2</cid>
@@ -58,7 +58,7 @@
     <person birthday="1974-7-8" first="Lee" name="Lizy" sex="Female">
         <cid>12</cid>
         <pid>0</pid>
-        <halfid>0</halfid>
+        <halfid>1</halfid>
     </person>
     <person birthday="1980-8-8" first="Lee" name="Richard" sex="Male">
         <cid>13</cid>

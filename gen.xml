@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<gen xmlns:xs="http://www.w3.org/2001/XMLSchema" xml:schemaLocation="http://localhost/xml/gen.xsd">
+<gen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pdh-pms-p.cloudapp.net:8080/xml/gen.xsd">
     <individual birthday="1970-7-8" lastname="Nuhn" name="Harry" sex="Male">
         <cid>1</cid>
         <pid>0</pid>

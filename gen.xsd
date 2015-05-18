@@ -2,7 +2,7 @@
 <xs:schema elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
     <xs:simpleType name="SimpleDateType">
         <xs:restriction base="xs:token">
-            <xs:pattern value="(\-)?\d{4}(/\d{4})?(\-\d{2}(\-\d{2})?)?"/>
+            <xs:pattern value="(\-)?\d{4}(/\d{4})?(\-\d{1,2}(\-\d{1,2})?)?"/>
         </xs:restriction>
     </xs:simpleType>
     <xs:simpleType name="GenderTypes">
@@ -15,12 +15,12 @@
     <xs:element name="gen">
         <xs:complexType>
             <xs:sequence>
-                <xs:element maxOccurs="unbounded" minOccurs="0" name="Individual">
+                <xs:element maxOccurs="unbounded" minOccurs="0" name="individual">
                     <xs:complexType>
                         <xs:sequence>
-                            <xs:element name="pid" type="xs:positiveInteger"/>
-                            <xs:element name="cid" type="xs:positiveInteger"/>
-                            <xs:element name="halfid" type="xs:positiveInteger"/>
+                            <xs:element name="cid" type="xs:nonNegativeInteger"/>
+                            <xs:element name="pid" type="xs:nonNegativeInteger"/>
+                            <xs:element name="halfid" type="xs:nonNegativeInteger"/>
                         </xs:sequence>
                         <xs:attribute name="lastname" type="xs:string" use="required"/>
                         <xs:attribute name="name" type="xs:string" use="required"/>
